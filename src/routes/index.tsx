@@ -185,14 +185,23 @@ function Index() {
         </ol>
       </section>
 
-      <footer className="text-center text-xs text-muted-foreground">
-        <a
-          href="https://github.com/fiatjaf/josephsquares"
-          className="underline hover:text-foreground"
-        >
-          Source code &amp; more information
-        </a>
-      </footer>
+      <section className="rounded-2xl border border-border bg-card px-4 py-3 text-sm text-muted-foreground">
+        <h2 className="font-hand text-xl text-foreground">This is a demo</h2>
+        <p className="mt-1">
+          This webapp exists only so you can learn the game, then teach it to others and play it
+          with pen and paper in appropriate social situations.
+        </p>
+        <p className="mt-1">
+          See the{" "}
+          <a
+            href="https://github.com/fiatjaf/josephsquares"
+            className="underline hover:text-foreground"
+          >
+            source code and more information
+          </a>
+          .
+        </p>
+      </section>
     </main>
   );
 }
