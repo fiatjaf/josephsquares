@@ -2,11 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useCallback, useEffect, useMemo, useState } from "react";
 import { GameCanvas } from "@/components/GameCanvas";
 import { Button } from "@/components/ui/button";
-import {
-  createShapes,
-  type Line,
-  type ShapeKind,
-} from "@/lib/josephs-squares";
+import { createShapes, type Line, type ShapeKind } from "@/lib/josephs-squares";
 import { cn } from "@/lib/utils";
 import { hasLegalMove } from "@/lib/move-detection";
 
@@ -65,20 +61,17 @@ function Index() {
     }
   }, [shapes, lines, used, player, loser]);
 
-  const handleCommit = useCallback(
-    (line: Line, startKey: string, endKey: string) => {
-      setLines((ls) => [...ls, line]);
-      setUsed((u) => {
-        const next = new Set(u);
-        next.add(startKey);
-        next.add(endKey);
-        return next;
-      });
-      setPlayer((p) => (p === 0 ? 1 : 0));
-      setMessage("");
-    },
-    [],
-  );
+  const handleCommit = useCallback((line: Line, startKey: string, endKey: string) => {
+    setLines((ls) => [...ls, line]);
+    setUsed((u) => {
+      const next = new Set(u);
+      next.add(startKey);
+      next.add(endKey);
+      return next;
+    });
+    setPlayer((p) => (p === 0 ? 1 : 0));
+    setMessage("");
+  }, []);
 
   return (
     <main className="mx-auto flex min-h-screen w-full max-w-5xl flex-col gap-4 px-4 py-6">
@@ -88,8 +81,8 @@ function Index() {
             Joseph's Squares
           </h1>
           <p className="mt-1 max-w-md text-sm text-muted-foreground">
-            Draw a line from a free side of one shape to a free side of another.
-            Never cross anything. Run out of moves and you lose.
+            Draw a line from a free side of one shape to a free side of another. Never cross
+            anything. Run out of moves and you lose.
           </p>
         </div>
         <div className="flex items-center gap-2">
@@ -137,9 +130,7 @@ function Index() {
       <div className="flex items-center justify-between gap-3 rounded-2xl border border-border bg-card px-4 py-3">
         {loser === null ? (
           <p className="font-hand text-2xl">
-            <span
-              className={player === 0 ? "text-player-a" : "text-player-b"}
-            >
+            <span className={player === 0 ? "text-player-a" : "text-player-b"}>
               {PLAYER_NAMES[player]}
             </span>{" "}
             <span className="text-muted-foreground">draws</span>
@@ -154,11 +145,7 @@ function Index() {
         )}
         <div className="flex gap-2">
           {loser === null && (
-            <Button
-              variant="outline"
-              size="sm"
-              onClick={() => setLoser(player)}
-            >
+            <Button variant="outline" size="sm" onClick={() => setLoser(player)}>
               I can't move
             </Button>
           )}
@@ -197,6 +184,15 @@ function Index() {
           <li>Don't draw silly confusing squiggles. Be a reasonable human.</li>
         </ol>
       </section>
+
+      <footer className="text-center text-xs text-muted-foreground">
+        <a
+          href="https://github.com/fiatjaf/josephsquares"
+          className="underline hover:text-foreground"
+        >
+          Source code &amp; more information
+        </a>
+      </footer>
     </main>
   );
 }
